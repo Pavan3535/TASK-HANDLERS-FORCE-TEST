@@ -1,0 +1,20 @@
+---
+- name: test package variables 
+  hosts: localhost 
+  force_handlers: true
+  tasks: 
+
+    - name: success mode 
+      shell: /bin/true 
+      notify: logger out
+
+    - name: install pacakge 
+      yum:
+        name: ex249 
+        state: latest 
+
+  handlers: 
+    - name: logger out 
+      shell: logger " ex249 is courrpted " 
+
+
